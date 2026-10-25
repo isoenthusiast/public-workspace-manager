@@ -1,8 +1,44 @@
 # Public Workspace Manager
 
-A local, read-only file browser with live previews and filename-first text search.
+**Your files already have a home. Give them a window.** Public Workspace Manager
+turns a folder into a live, readable workspace in your browser—so you can find a
+document, understand its contents, and keep your place as the work changes.
+
+## The problem: finding a file is only half the job
+
+A workspace can hold Markdown notes, CSV registers, scripts and nested folders.
+Finding the right document often means opening several applications, reading raw
+text, and switching back to the folder list to find the next file. When documents
+change, an old preview can leave you looking at yesterday's work.
+
+## The root cause: navigation and understanding are separated
+
+Folder listings show where files live, but a filename alone rarely tells the whole
+story. Editors and viewers reveal the contents, yet switching between them breaks
+the connection to the surrounding workspace. A search that treats every text
+match equally can also bury the file whose name matches exactly what you asked for.
+
+The missing piece is a shared view of the folder structure, relevant search
+results and readable document contents, kept in step with the files on disk.
+
+## The solution: browse, find and read in one place
+
+Point Public Workspace Manager at an existing folder. It provides a local,
+read-only browser interface without importing your documents or requiring a new
+folder structure. Each feature addresses a part of that browsing workflow:
+
+| What gets in the way | How the workspace manager helps |
+| --- | --- |
+| Losing your place while opening documents | A folder tree, file list and preview sit side by side when screen space permits. |
+| Raw document syntax obscuring the content | Markdown renders as readable text, CSV becomes a scrollable table with sticky headers, and code gets syntax highlighting with exact-text copying. |
+| Remembering a filename or a phrase, but not its location | Literal, case-insensitive search checks filenames and contents, ranks filename matches first, and can stay within the current folder and its subfolders. |
+| Looking at an outdated listing or preview | Automatic polling refreshes the tree, file list and selected document as files change. |
+| Panels competing for limited screen space | Collapsible navigation, draggable and keyboard-accessible dividers, and responsive scrolling let you adjust the view. |
+| Large files or searches producing too much to display | Bounded previews and paginated search show limit notices so you know when results are incomplete. |
+
 "Public" describes the intended open-source project, not access to your files.
-This repository is a private release candidate; publication and the project licence remain pending review.
+This repository is a private release candidate; publication and the project licence
+remain pending review.
 
 ## Run
 
@@ -15,14 +51,39 @@ python3 run.py --root ./examples/workspace
 Open http://127.0.0.1:8765. Use `--root /path/to/your/folder` to browse another directory.
 Alternatively install with `python3 -m pip install .` and run `workspace-manager --root /path/to/folder`.
 
-## Features
+### Choosing a port and avoiding conflicts
 
-- Automatically refreshed folder tree, file lists and previews.
-- Collapsible navigation and draggable, keyboard-accessible pane dividers.
-- Side-by-side previews when space permits; scrollable, viewport-aware panels.
-- Minimal Markdown, CSV tables with sticky headers, syntax-highlighted code and copy.
-- Literal, case-insensitive filename/content search with filename relevance first.
-- Bounded previews and paginated search with visible truncation notices.
+Port **8765 is a configurable default**, not a required standard. If another
+application is already using it, the manager cannot start on that address and
+currently reports an "address already in use" error. The existing application
+continues running; the manager does not automatically try another port.
+
+**For local browsing, especially if you are unsure which ports are available,**
+let the operating system select an available port:
+
+```sh
+python3 run.py --root ./examples/workspace --port 0
+```
+
+Open the actual `http://127.0.0.1:...` address printed in the terminal. Do not open
+port 0 itself. The selected port may change each time you start the manager;
+keep the terminal running while you browse.
+
+**For a predictable address,** choose an available fixed port instead:
+
+```sh
+python3 run.py --root ./examples/workspace --port 9000
+```
+
+Then open http://127.0.0.1:9000. Port 9000 is only an example and could also be
+occupied. If it is, choose another port or use `--port 0`; there is no need to
+stop an unfamiliar application just to free the default port.
+
+**For Tailscale or another reverse proxy,** use a fixed local port and configure
+the proxy to forward to that same address. If you change the manager's port,
+update the proxy's forwarding destination too. An automatically selected port is
+not suitable for a static forwarding configuration. The browser-facing HTTPS
+port may differ from the manager's local port.
 
 ## Configuration
 
