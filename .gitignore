@@ -1,0 +1,22 @@
+# Local coordination and private provenance are never release material.
+/.local/
+/AGENTS.md
+**/.env
+**/.env.*
+**/credentials*
+**/*private-key*
+**/*.pem
+**/*.key
+**/__pycache__/
+**/*.pyc
+**/node_modules/
+**/.venv/
+**/narration/
+**/*.mp3
+**/*.wav
+/test-results/
+/playwright-report/
+
+/dist/
+/build/
+**/*.egg-info/
