@@ -44,6 +44,30 @@ Vendored libraries retain their own licences; see [LICENSING.md](LICENSING.md).
 
 Requires Python 3.10 or newer. No runtime Python dependencies or CDN access.
 
+### Windows: launch from your desktop
+
+1. Clone the repository or download and extract its ZIP into a permanent folder.
+2. Double-click **Create Desktop Shortcuts.bat** once.
+3. Open **Public Workspace Manager** from your desktop. On first launch, paste
+   the full path of the folder you want to browse (for example `C:\Users\You\Documents`).
+
+The launcher remembers that folder, selects an available port, and opens your
+default browser. Keep its terminal window open while browsing; close it or press
+Ctrl+C to stop the server. Use the **Choose workspace folder** shortcut to switch
+folders. You can also double-click **Start Workspace Manager.bat** directly.
+
+Python 3.10+ must already be installed. If Python cannot be found, install it with
+the PATH option enabled. Keep the extracted application folder in place: desktop
+shortcuts point to it. If you move it, rerun the shortcut setup. The remembered
+path is stored in `%LOCALAPPDATA%\PublicWorkspaceManager\launcher.json`.
+
+These launchers run the app on the Windows computer itself. For an app already
+running on a headless server, bookmark its private browser URL instead; the server
+still needs its own running process. Desktop launchers use a changing local port,
+so use the fixed-port command below for a reverse proxy.
+
+### Command line
+
 ```sh
 python3 run.py --root ./examples/workspace
 ```

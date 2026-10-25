@@ -8,6 +8,8 @@ import json
 import os
 import re
 import time
+import threading
+import webbrowser
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit, parse_qs
@@ -246,6 +248,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, required=True, help='Directory to browse (required)')
     parser.add_argument('--port', type=int, default=8765)
+    parser.add_argument('--open-browser', action='store_true', help='Open the local app in your default browser')
     parser.add_argument('--title', default='Public Workspace Manager')
     parser.add_argument('--poll-interval', type=float, default=2, metavar='SECONDS')
     parser.add_argument('--exclude', action='append', default=[], metavar='NAME', help='Additional excluded filename or directory name; repeatable')
@@ -276,11 +279,18 @@ def main():
     server = ThreadingHTTPServer(('127.0.0.1', args.port), Handler)
     server.trusted_origin = args.trusted_origin
     print(f'Workspace Manager: http://127.0.0.1:{server.server_port}', flush=True)
+    browser_timer = None
+    if args.open_browser:
+        browser_timer = threading.Timer(0.5, webbrowser.open, args=(f'http://127.0.0.1:{server.server_port}',))
+        browser_timer.daemon = True
+        browser_timer.start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         pass
     finally:
+        if browser_timer:
+            browser_timer.cancel()
         server.server_close()
 
 
