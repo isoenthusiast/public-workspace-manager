@@ -1,7 +1,10 @@
-# Licensing status
+# Licensing
 
-Apache-2.0 is proposed for original application code but has not been adopted.
-No open-source licence is granted for that code by this review candidate.
-Public release requires the owner's licence decision and rights review.
+Original Public Workspace Manager application code is licensed under the
+Apache License, Version 2.0. See [LICENSE](LICENSE) for the full terms.
 
-Vendored dependencies retain their existing licences. See THIRD-PARTY-NOTICES.md.
+Copyright 2026 Edward Wee.
+
+Vendored dependencies retain their existing licences and attribution notices:
+markdown-it uses MIT; highlight.js uses BSD-3-Clause. See
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and their included licence files.

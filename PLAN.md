@@ -1,9 +1,14 @@
-# Release preparation
+# Project status
 
 Completed: standalone source extraction, explicit root/configuration, synthetic
 fixtures, backend and browser tests, portable packaging and dependency notices.
+The owner approved public publication and Apache-2.0 licensing for this standalone
+application. Release authorization is not a regulatory compliance certification.
 
-Before public release: review the exact candidate, establish applicable audit
-scope and evidence, resolve rights and licence decisions, and record explicit
-publication authorization. Automated software checks do not establish regulatory
-compliance or independent assurance. The repository remains private meanwhile.
+## Next validation work
+
+- Verify remote use and touch interactions on physical devices.
+- Measure search responsiveness on large representative workspaces.
+- Expand browser and operating-system coverage beyond Linux/Chromium.
+
+Use synthetic data for shared test reports and examples.

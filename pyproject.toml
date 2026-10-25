@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "Local, read-only workspace browser with live document previews"
 requires-python = ">=3.10"
 readme = "README.md"
+license = {file = "LICENSE"}
 
 [project.scripts]
 workspace-manager = "workspace_manager.server:main"

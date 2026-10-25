@@ -37,8 +37,8 @@ folder structure. Each feature addresses a part of that browsing workflow:
 | Large files or searches producing too much to display | Bounded previews and paginated search show limit notices so you know when results are incomplete. |
 
 "Public" describes the intended open-source project, not access to your files.
-This repository is a private release candidate; publication and the project licence
-remain pending review.
+The application is available under the [Apache-2.0 licence](LICENSE).
+Vendored libraries retain their own licences; see [LICENSING.md](LICENSING.md).
 
 ## Run
 
