@@ -31,7 +31,7 @@ def main():
         except OSError as exc:
             print(f'Could not remember the folder: {exc}. Continuing for this session.')
     print(f'Browsing: {folder}\nKeep this window open. Close it or press Ctrl+C to stop.\n'
-          'To change folders, use the "Choose workspace folder" desktop shortcut.', flush=True)
+          'To change folders, use the Choose Workspace Folder launcher or shortcut.', flush=True)
     try:
         return subprocess.call([sys.executable, str(APP / 'run.py'), '--root', str(folder), '--port', '0', '--open-browser'])
     except KeyboardInterrupt:

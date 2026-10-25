@@ -66,6 +66,33 @@ running on a headless server, bookmark its private browser URL instead; the serv
 still needs its own running process. Desktop launchers use a changing local port,
 so use the fixed-port command below for a reverse proxy.
 
+### macOS: launch from Finder or your Desktop
+
+1. Install Python 3.10+ if it is not already available.
+2. Clone or extract the repository into a permanent folder.
+3. Double-click **Start Workspace Manager.command**. On first launch, paste the
+   full folder path to browse, such as `/Users/you/Documents`.
+
+It remembers the folder, selects an available port, and opens your default
+browser. Keep the Terminal window open while using it; press Ctrl+C to stop.
+Use **Choose Workspace Folder.command** whenever you want to change folders.
+
+For a Desktop shortcut, select either `.command` file in Finder, choose
+**File → Make Alias**, and move the alias to your Desktop. Keep the original
+application folder in place; move the alias rather than the launcher itself.
+
+If an extracted ZIP has lost executable permissions, open Terminal in the
+repository folder and run this once:
+
+```sh
+chmod +x "Start Workspace Manager.command" "Choose Workspace Folder.command"
+```
+
+The launcher checks `python3` and common Homebrew installation paths. It stores
+the remembered folder in `~/.config/PublicWorkspaceManager/launcher.json`.
+The macOS launcher has shell and shared Python checks on Linux; Finder behavior
+and browser opening still need verification on a physical Mac.
+
 ### Command line
 
 ```sh
